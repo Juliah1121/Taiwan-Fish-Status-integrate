@@ -1,1 +1,10 @@
-# Taiwan-Fish-Status-integrate
+# 臺灣沿近海漁獲資源評估（漁業年報整合，1950–2025）
+
+互動網頁：`index.html`（GitHub Pages）。分頁：總覽／物種查詢／資源狀態圖／CMSY++・Kobe／脆弱度×資源狀態／歷年狀態總表／資料與方法。
+
+- 主序列：臺灣漁業年報沿岸＋近海漁業（排除遠洋 1001 單船拖網與 1099 其他遠洋漁業）
+- 年報缺年與整列缺漏以 FAO 對應物種漁獲 × 局部比值補值
+- 50 個物種（沿近海 36、跨洋區參考 14）：Sea Around Us Stock-status plots 與 CMSY++（CMSY++16.R，Froese et al.）
+- `figs/cmsy/`：CMSY++ 官方輸出圖
+
+注意：鮪旗魚與大洋性鯊魚為跨洋區資源，結果僅供參考；示意插圖非實物照片。
