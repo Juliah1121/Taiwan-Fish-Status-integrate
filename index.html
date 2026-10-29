@@ -295,7 +295,7 @@ function hbar(host,items){ // items: [label,value,colorVar]
 function renderOverview(){
   const inc=T.filter(t=>t.inc),cm=T.filter(t=>t.cmsy),co=cm.filter(t=>t.grp==='coastal');
   const cnt=k=>inc.filter(t=>t.last===k).length,kc=(z,a=cm)=>a.filter(t=>t.cmsy.zone===z).length;
-  const med=a=>{const s=a.slice().sort((x,y)=>x-y);return s.length?s[Math.floor(s.length/2)]:NaN};
+  const med=a=>{const s=a.slice().sort((x,y)=>x-y),n=s.length;return n?(n%2?s[(n-1)/2]:(s[n/2-1]+s[n/2])/2):NaN};
   document.getElementById('strip').innerHTML=`
    <div><span class="v">${T.length}</span><span class="l">評估物種（沿近海 ${T.filter(t=>t.grp==='coastal').length}、跨洋區 ${T.filter(t=>t.grp==='hms').length}）</span></div>
    <div><span class="v">${DATA.nfill}</span><span class="l">以 FAO 補值或內插的資料點</span></div>
