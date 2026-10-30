@@ -339,7 +339,6 @@ function renderSheet(){
   s.innerHTML=`<div class="sheet-head"><div style="display:grid;gap:4px;min-width:0"><div class="eyebrow">${t.code} · ${esc(t.en)} · ${GRP[t.grp]}</div><h2>${esc(t.cn)}</h2><div class="sci">${esc(t.sci)}</div></div>
    <figure class="plate"><img src="${imgURI(t)}" alt="${esc(t.cn)}示意插圖"><figcaption>${t.lvl==='種'?'物種示意插圖':t.lvl+'級代表插圖'}，依體型、鰭式與體色繪製，非實物照片</figcaption></figure></div>
   <dl class="kv">${kv('綱',esc(t.cls)+'　'+esc(t.clsCn))}${kv('目',esc(t.ord))}${kv('科',esc(t.fam))}${kv('屬',esc(t.gen))}${kv('分類層級',t.lvl)}${t.note?kv('備註',esc(t.note)):''}</dl>
-  ${mgHTML(t)}
   <div><h3>生活史與本質脆弱度</h3><dl class="kv" style="margin-top:8px">
    ${kv('本質脆弱度',t.vul!=null?`<b>${t.vul}</b> / 100　${esc(t.vulCat)}<div class="vbar"><span style="width:${t.vul}%"></span></div><span class="dim" style="font-size:12px">${esc(t.vulSrc)}</span>`:'<span class="dim">名錄無對應</span>')}
    ${kv('最大壽命 t<sub>max</sub>',t.tmax?esc(t.tmax)+' 年':'—')}${kv('初次成熟 t<sub>m</sub>',t.tm?esc(t.tm)+' 年':'—')}${kv('成長係數 k',t.k?esc(t.k)+' yr⁻¹':'—')}
@@ -351,7 +350,8 @@ function renderSheet(){
     ${kv('Kobe 分區',`<span class="pill"><i style="background:var(${ZC[c.zone]})"></i>${c.zone}區</span>　紅 ${fmt(c.pR*100)}%・黃 ${fmt(c.pY*100)}%・橙 ${fmt(c.pO*100)}%・綠 ${fmt(c.pG*100)}%`)}${kv('分析年',`${c.y0}–${LAST}`)}${kv('起始 B/k 先驗',c.stb)}</dl></div>
    <div class="grid2"><div><h3>B/B<sub>MSY</sub></h3><div class="chart" id="c-b"></div></div><div><h3>F/F<sub>MSY</sub></h3><div class="chart" id="c-f"></div></div></div>
    <div><h3>Kobe 軌跡</h3><div class="chart" id="c-k"></div></div>
-   <div class="figs">${['AN','MAN','KOBE'].map(k=>`<figure><img loading="lazy" src="figs/cmsy/${c.stock}_${k}.jpg" alt="CMSY++ ${k} 圖" onerror="this.parentNode.remove()"><figcaption>CMSY++ 官方輸出：${{AN:'分析圖',MAN:'管理圖',KOBE:'Kobe 圖'}[k]}</figcaption></figure>`).join('')}</div>`:''}`;
+   ${mgHTML(t)}
+   <div class="figs">${['AN','MAN','KOBE'].map(k=>`<figure><img loading="lazy" src="figs/cmsy/${c.stock}_${k}.jpg" alt="CMSY++ ${k} 圖" onerror="this.parentNode.remove()"><figcaption>CMSY++ 官方輸出：${{AN:'分析圖',MAN:'管理圖',KOBE:'Kobe 圖'}[k]}</figcaption></figure>`).join('')}</div>`:mgHTML(t)}`;
   const cmax=Math.max(...t.c,1);
   lineChart(document.getElementById('c-catch'),{x:Y,y:t.sm,bars:t.c,fill:t.fill,ymax:cmax*1.08,bands:t.st.split(''),h:250,
     ref:[{v:t.peakC*0.5,l:'50% 峰值'},{v:t.peakC*0.1,l:'10% 峰值'}],
