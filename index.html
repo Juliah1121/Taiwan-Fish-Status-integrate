@@ -274,7 +274,7 @@ const LAST=Y[Y.length-1];
 
 /* ---------- tabs ---------- */
 const TABS=[['overview','總覽'],['species','物種查詢'],['ssp','資源狀態圖'],['kobe','CMSY++／Kobe'],['risk','脆弱度×資源狀態'],['matrix','歷年狀態總表'],['methods','資料與方法']];
-document.getElementById('tabbar').innerHTML=TABS.map(([k,l])=>`<a href="#${k}" data-k="${k}">${l}</a>`).join('');
+document.getElementById('tabbar').innerHTML=TABS.map(([k,l])=>`<a href="#${k}" data-k="${k}">${l}</a>`).join('')+'<a href="gears.html">漁法介紹</a>';
 const drawn={};
 function show(k){
   if(!TABS.some(t=>t[0]===k))k='overview';
