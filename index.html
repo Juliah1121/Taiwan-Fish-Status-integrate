@@ -56,6 +56,8 @@ h1{font-family:var(--f-display);font-weight:900;font-size:clamp(26px,4vw,40px);l
 h2{font-family:var(--f-display);font-weight:600;font-size:22px;margin:0;text-wrap:balance}
 h3{font-size:15px;margin:0;font-weight:700}
 header p{margin:0;color:#c4d2da;max-width:80ch;font-size:14px}
+header .hero{display:flex;gap:24px;align-items:center;margin-top:8px}.hero-poster{flex:0 0 220px;display:block;line-height:0}.hero-poster img{width:220px;height:auto;border:1px solid #2a3f50;border-radius:4px}.hero-text{display:grid;gap:8px;min-width:0}
+@media (max-width:640px){header .hero{flex-direction:column;align-items:flex-start}.hero-poster{flex-basis:auto}.hero-poster img{width:min(100%,320px)}}
 header p.tagline{color:#eef3f5;font-size:16px;font-weight:500}
 nav.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--band);border-bottom:1px solid #22384a}
 nav.tabs .inner{display:flex;gap:2px;overflow-x:auto;scrollbar-width:thin}
@@ -154,7 +156,6 @@ th.sortable{cursor:pointer}
 dl.kv.mgkv{grid-template-columns:repeat(auto-fill,minmax(min(46%,130px),1fr));gap:8px 16px}
 .mgfig{margin:0;display:grid;gap:4px}.mgfig img{width:100%;max-width:860px;height:auto;background:#fff;border:1px solid var(--rule)}.mgfig figcaption{font-size:12px;color:var(--mute)}
 .mgtext{display:grid;gap:8px;font-size:14.5px}.mgtext p{margin:0}.mgtext ul{margin:0;padding-left:20px;display:grid;gap:6px}
-.poster-fig{margin:0;display:grid;gap:6px;justify-items:start}.poster-fig img{width:100%;max-width:560px;height:auto;border:1px solid var(--rule);display:block}.poster-fig figcaption{font-size:12.5px;color:var(--ink2)}
 footer{font-size:12px;color:var(--mute);border-top:1px solid var(--rule);padding-top:12px}
 </style>
 
@@ -162,8 +163,13 @@ footer{font-size:12px;color:var(--mute);border-top:1px solid var(--rule);padding
 <body>
 <header class="band"><div class="inner">
   <h1>臺灣沿近海漁業資源評估（測試版）</h1>
+  <div class="hero">
+  <a class="hero-poster" href="poster.jpg" target="_blank" rel="noopener"><img src="poster.jpg" width="1200" height="2000" alt="臺灣沿近海漁業資源評估介紹海報：50 個漁獲資源的 Kobe 軌跡拼圖、重點數字、優先管理物種與漁法示意圖"></a>
+  <div class="hero-text">
   <p class="tagline">讓數據說出海洋的故事，看見臺灣漁業資源的現在與未來</p>
   <p>每一種魚，都是海洋生態與漁業永續的重要一環。本平台透過科學資料與視覺化圖表，呈現臺灣沿近海魚類資源的變化、現況與脆弱程度，讓我們更容易理解海洋資源面臨的挑戰，並以科學為基礎，提出優先關注的30個物種，共同思考漁業管理與海洋永續的未來。</p>
+  </div>
+  </div>
 </div></header>
 <nav class="tabs" aria-label="分頁"><div class="inner" id="tabbar"></div></nav>
 <main><div class="inner">
@@ -176,9 +182,6 @@ footer{font-size:12px;color:var(--mute);border-top:1px solid var(--rule);padding
     <div class="panel"><div class="ph"><h3>CMSY++ 2025 年 Kobe 分區（50 個，含跨洋區）</h3><a class="note" href="#kobe">看 Kobe 圖 →</a></div><div class="chart" id="ov-kobe"></div></div>
   </div>
   <div class="panel prose" id="ov-text"></div>
-  <div class="panel poster"><div class="ph"><h3>網站介紹海報</h3><a class="note" href="poster.jpg" target="_blank" rel="noopener">開啟原尺寸 →</a></div>
-    <figure class="poster-fig"><a href="poster.jpg" target="_blank" rel="noopener"><img src="poster.jpg" width="1200" height="2000" loading="lazy" alt="臺灣沿近海漁業資源評估介紹海報：50 個漁獲資源的 Kobe 軌跡拼圖、重點數字、優先管理物種與漁法示意圖"></a>
-    <figcaption>以 50 個漁獲資源的 Kobe 軌跡拼成主圖，依 2025 年所在分區與 B/Bmsy 排列。</figcaption></figure></div>
 </section>
 
 <section data-tab="species" aria-labelledby="sp-h" hidden>
