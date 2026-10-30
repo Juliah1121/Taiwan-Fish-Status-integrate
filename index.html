@@ -5,7 +5,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>臺灣沿近海漁業資源評估（測試版）</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="臺灣漁業年報沿岸與近海漁獲（1950–2025，FAO 補缺整合）50 個物種的資源狀態圖（SSP）、CMSY++ 與 Kobe 評估、本質脆弱度與歷年狀態總表。">
+<meta name="description" content="讓數據說出海洋的故事。以漁業年報與科學評估呈現臺灣沿近海 50 個漁獲資源的變化、現況與脆弱程度，並提出優先關注的 30 個物種與保育管理建議。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="臺灣沿近海漁業資源評估（測試版）">
+<meta property="og:title" content="臺灣沿近海漁業資源評估（測試版）">
+<meta property="og:description" content="讓數據說出海洋的故事。以漁業年報與科學評估呈現臺灣沿近海 50 個漁獲資源的變化、現況與脆弱程度，並提出優先關注的 30 個物種與保育管理建議。">
+<meta property="og:url" content="https://juliah1121.github.io/Taiwan-Fish-Status-integrate/">
+<meta property="og:image" content="https://juliah1121.github.io/Taiwan-Fish-Status-integrate/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="臺灣沿近海漁業資源評估介紹海報：50 個漁獲資源的 Kobe 軌跡拼圖">
+<meta property="og:locale" content="zh_TW">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="臺灣沿近海漁業資源評估（測試版）">
+<meta name="twitter:description" content="讓數據說出海洋的故事。以漁業年報與科學評估呈現臺灣沿近海 50 個漁獲資源的變化、現況與脆弱程度，並提出優先關注的 30 個物種與保育管理建議。">
+<meta name="twitter:image" content="https://juliah1121.github.io/Taiwan-Fish-Status-integrate/og.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
@@ -140,6 +154,7 @@ th.sortable{cursor:pointer}
 dl.kv.mgkv{grid-template-columns:repeat(auto-fill,minmax(min(46%,130px),1fr));gap:8px 16px}
 .mgfig{margin:0;display:grid;gap:4px}.mgfig img{width:100%;max-width:860px;height:auto;background:#fff;border:1px solid var(--rule)}.mgfig figcaption{font-size:12px;color:var(--mute)}
 .mgtext{display:grid;gap:8px;font-size:14.5px}.mgtext p{margin:0}.mgtext ul{margin:0;padding-left:20px;display:grid;gap:6px}
+.poster-fig{margin:0;display:grid;gap:6px;justify-items:start}.poster-fig img{width:100%;max-width:560px;height:auto;border:1px solid var(--rule);display:block}.poster-fig figcaption{font-size:12.5px;color:var(--ink2)}
 footer{font-size:12px;color:var(--mute);border-top:1px solid var(--rule);padding-top:12px}
 </style>
 
@@ -161,6 +176,9 @@ footer{font-size:12px;color:var(--mute);border-top:1px solid var(--rule);padding
     <div class="panel"><div class="ph"><h3>CMSY++ 2025 年 Kobe 分區（50 個，含跨洋區）</h3><a class="note" href="#kobe">看 Kobe 圖 →</a></div><div class="chart" id="ov-kobe"></div></div>
   </div>
   <div class="panel prose" id="ov-text"></div>
+  <div class="panel poster"><div class="ph"><h3>網站介紹海報</h3><a class="note" href="poster.jpg" target="_blank" rel="noopener">開啟原尺寸 →</a></div>
+    <figure class="poster-fig"><a href="poster.jpg" target="_blank" rel="noopener"><img src="poster.jpg" width="1200" height="2000" loading="lazy" alt="臺灣沿近海漁業資源評估介紹海報：50 個漁獲資源的 Kobe 軌跡拼圖、重點數字、優先管理物種與漁法示意圖"></a>
+    <figcaption>以 50 個漁獲資源的 Kobe 軌跡拼成主圖，依 2025 年所在分區與 B/Bmsy 排列。</figcaption></figure></div>
 </section>
 
 <section data-tab="species" aria-labelledby="sp-h" hidden>
