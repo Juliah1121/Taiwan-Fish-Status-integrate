@@ -298,7 +298,7 @@ const LAST=Y[Y.length-1];
 
 /* ---------- tabs ---------- */
 const TABS=[['overview','總覽'],['species','魚種資源評估與管理建議'],['ssp','資源狀態圖'],['kobe','CMSY++／Kobe'],['risk','脆弱度×資源狀態'],['matrix','歷年狀態總表']];
-const NAV=['overview','ssp','kobe','risk','matrix','@mgmt.html|管理建議','species','@gears.html|漁業動態'];
+const NAV=['overview','ssp','kobe','risk','matrix','@mgmt.html|管理建議','species','@fao.html|FAO 序列','@gears.html|漁業動態'];
 document.getElementById('tabbar').innerHTML=NAV.map(k=>{if(k[0]==='@'){const [h,l]=k.slice(1).split('|');return `<a href="${h}">${l}</a>`}const l=TABS.find(t=>t[0]===k)[1];return `<a href="#${k}" data-k="${k}">${l}</a>`}).join('');
 const drawn={};
 function show(k){
