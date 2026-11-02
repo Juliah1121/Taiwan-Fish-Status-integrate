@@ -329,7 +329,7 @@ function renderOverview(){
    <div><span class="v">${kc('紅',co)} / ${co.length}</span><span class="l">沿近海資源落在 Kobe 紅區</span></div>
    <div><span class="v">${fmt(med(co.map(t=>t.cmsy.b)),2)}</span><span class="l">沿近海 B/Bmsy 中位數</span></div>`;
   hbar(document.getElementById('ov-ssp'),['D','E','O','C','R'].map(k=>[ST[k],cnt(k),'--s-'+k]));
-  hbar(document.getElementById('ov-kobe'),[['紅區',kc('紅'),'--k-R'],['黃區',kc('黃'),'--k-Y'],['橙區',kc('橙'),'--k-O'],['綠區',kc('綠'),'--k-G']]);
+  hbar(document.getElementById('ov-kobe'),[['綠區',kc('綠'),'--k-G'],['橙區',kc('橙'),'--k-O'],['黃區',kc('黃'),'--k-Y'],['紅區',kc('紅'),'--k-R']]);
   document.getElementById('ov-text').innerHTML=DATA.overview;
 }
 
