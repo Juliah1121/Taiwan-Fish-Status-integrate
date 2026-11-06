@@ -9,16 +9,16 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="臺灣沿近海漁業資源評估平台（測試版）">
 <meta property="og:title" content="FishStatJ 長期序列物種｜臺灣沿近海漁業資源評估平台（測試版）">
-<meta property="og:description" content="讓數據說出海洋的故事。以漁業年報與科學評估呈現臺灣沿近海 50 個漁獲資源的變化、現況與脆弱程度，並提出優先關注的 30 個物種與保育管理建議。">
+<meta property="og:description" content="以科學數據洞察臺灣漁業資源的現況，為永續尋找解方。以漁業年報與科學評估呈現臺灣沿近海 36 種漁獲資源的變化、現況與脆弱程度（另有跨洋區 14 種供參考），並提出優先關注的 30 個指標物種。">
 <meta property="og:url" content="https://juliah1121.github.io/Taiwan-Fish-Status-integrate/fao.html">
 <meta property="og:image" content="https://juliah1121.github.io/Taiwan-Fish-Status-integrate/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="臺灣沿近海漁業資源評估介紹海報：50 個漁獲資源的 Kobe 軌跡拼圖">
+<meta property="og:image:alt" content="臺灣沿近海漁業資源評估平台介紹海報：50 個評估單位的 Kobe 軌跡拼圖">
 <meta property="og:locale" content="zh_TW">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="FishStatJ 長期序列物種｜臺灣沿近海漁業資源評估平台（測試版）">
-<meta name="twitter:description" content="讓數據說出海洋的故事。以漁業年報與科學評估呈現臺灣沿近海 50 個漁獲資源的變化、現況與脆弱程度，並提出優先關注的 30 個物種與保育管理建議。">
+<meta name="twitter:description" content="以科學數據洞察臺灣漁業資源的現況，為永續尋找解方。以漁業年報與科學評估呈現臺灣沿近海 36 種漁獲資源的變化、現況與脆弱程度（另有跨洋區 14 種供參考），並提出優先關注的 30 個指標物種。">
 <meta name="twitter:image" content="https://juliah1121.github.io/Taiwan-Fish-Status-integrate/og.jpg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -172,8 +172,8 @@ footer{font-size:12px;color:var(--mute);border-top:1px solid var(--rule);padding
   <h2 id="ov-h" hidden>資源評估總覽</h2>
   <div class="strip" id="strip"></div>
   <div class="two">
-    <div class="panel"><div class="ph"><h3>2025 年度 SSP 資源狀態分布（資源數）</h3><a class="note" href="#ssp">檢視資源狀態圖 →</a></div><div class="chart" id="ov-ssp"></div></div>
-    <div class="panel"><div class="ph"><h3>CMSY++ 2025 年度 Kobe 狀態分區（共 50 個評估單位，含跨洋區）</h3><a class="note" href="#kobe">檢視 Kobe 圖 →</a></div><div class="chart" id="ov-kobe"></div></div>
+    <div class="panel"><div class="ph"><h3>2025 年度 SSP 資源狀態分布（沿近海 36 種）</h3><a class="note" href="#ssp">檢視資源狀態圖 →</a></div><div class="chart" id="ov-ssp"></div></div>
+    <div class="panel"><div class="ph"><h3>CMSY++ 2025 年度 Kobe 狀態分區（沿近海 36 種）</h3><a class="note" href="#kobe">檢視 Kobe 圖 →</a></div><div class="chart" id="ov-kobe"></div></div>
   </div>
   <div class="panel prose" id="ov-text"></div>
 </section>
@@ -319,13 +319,14 @@ function hbar(host,items){ // items: [label,value,colorVar]
   host.innerHTML=items.map(([l,v,c])=>`<div style="display:grid;grid-template-columns:76px 1fr 44px;gap:10px;align-items:center;font-size:13px;margin:6px 0"><span>${l}</span><span style="height:14px;background:var(--grid);border-radius:2px;overflow:hidden"><span style="display:block;height:100%;width:${v/tot*100}%;background:var(${c});border-radius:2px"></span></span><b style="font-family:var(--f-data);font-weight:500;text-align:right">${v}</b></div>`).join('');
 }
 function renderOverview(){
-  const inc=T.filter(t=>t.inc),cm=T.filter(t=>t.cmsy),co=cm.filter(t=>t.grp==='coastal');
+  const CO=T.filter(t=>t.grp==='coastal'),inc=CO.filter(t=>t.inc),cm=CO.filter(t=>t.cmsy),co=cm;
+  const nfill=CO.reduce((n,t)=>n+(t.fill.match(/[FI]/g)||[]).length,0);
   const cnt=k=>inc.filter(t=>t.last===k).length,kc=(z,a=cm)=>a.filter(t=>t.cmsy.zone===z).length;
   const med=a=>{const s=a.slice().sort((x,y)=>x-y),n=s.length;return n?(n%2?s[(n-1)/2]:(s[n/2-1]+s[n/2])/2):NaN};
   document.getElementById('strip').innerHTML=`
-   <div><span class="v">${T.length}</span><span class="l">評估物種總數（沿近海系群 ${T.filter(t=>t.grp==='coastal').length} 種、跨洋區系群 ${T.filter(t=>t.grp==='hms').length} 種），另有FishStatJ臺灣序列資料18種</span></div>
-   <div><span class="v">${DATA.nfill}</span><span class="l">採用 FishStatJ 數據補值或插值之資料點</span></div>
-   <div><span class="v">${cnt('C')} / ${inc.length}</span><span class="l">2025 年 SSP 判定為崩潰之資源</span></div>
+   <div><span class="v">${CO.length}</span><span class="l">沿近海評估物種（另有跨洋區系群 ${T.filter(t=>t.grp==='hms').length} 種僅供參考、FishStatJ臺灣序列資料 18 種另頁呈現，均不納入本儀表板）</span></div>
+   <div><span class="v">${nfill}</span><span class="l">採用 FishStatJ 數據補值或插值之資料點（沿近海 36 種）</span></div>
+   <div><span class="v">${cnt('C')} / ${inc.length}</span><span class="l">2025 年 SSP 判定為崩潰之沿近海資源</span></div>
    <div><span class="v">${kc('紅',co)} / ${co.length}</span><span class="l">沿近海資源落於 Kobe 紅區（過漁且過度開發）</span></div>
    <div><span class="v">${fmt(med(co.map(t=>t.cmsy.b)),2)}</span><span class="l">沿近海資源 B/Bmsy 中位數</span></div>`;
   hbar(document.getElementById('ov-ssp'),['D','E','O','C','R'].map(k=>[ST[k],cnt(k),'--s-'+k]));
